@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Js Works</title>
+    <style>
+        .container{
+          
+           height: 600px;
+           width: 50%;
+           margin: auto;
+           display: flex;
+          background-color: #F0F2F5;
+           box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+        }
+        .left{
+           width: 20%;
+           
+           height: 100%;
+        }
+        button{
+            padding: 15px 35px;
+            margin-top: 15%;
+            margin-left: 10%;
+            height: 50px;
+            width: 70%;
+            border-radius: 5%;
+            background-color: #0E90F2;
+            color: whitesmoke;
+            font-size: 15px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+          
+        }
+        .right{
+            width: 80%;
+           
+        }
+        #content{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            justify-content: center;
+            margin-top: 4%;
+            margin-right: 2%;
+        }
+        button:hover{
+            background-color: teal;
+            color: white;
+            
+        }
+        h1{
+            margin-top: 25%;
+            margin-left: 13%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin-right: 12%;
+            justify-content: center;
+        }
+        
+       
+    </style>
+</head>
+<body>
+   <div class="container">
+       <div class="left">
+    <button onclick="obj()">Objects</button>
+    <button style="background-color: none;" id="arr" onclick="array()">Arrays</button>
+    <button onclick="funct()">Functions</button>
+    <button onclick="str()">Strings</button>
+    <button onclick="num()">Numbers</button>
+    <button onclick="nul()">Null</button>
+    <button onclick="unde()">Undefiend</button>
+    </div>
+       <div class="right">
+           <h1>Click on given button to know more about JavaScript</h1>
+           <p id="content"></p>
+       </div>
+   </div>
+</body>
+</html>
+<script>
+    function obj(){
+        var h1 = document.querySelector("h1")
+        h1.textContent = "Object in Javascript"
+        h1.style.marginLeft = "20%"
+        var p = document.querySelector("#content");
+        p.textContent = "An object type is simply a collection of properties in the form of name and value pairs. Notice from the list that null and undefined are primitive JavaScript data types, each being a data type containing just one value. ... A function is a special kind of object that has an executable script block associated with it."
+        var body = document.querySelector("body")
+        console.log("here")
+    }
+    function array(){
+        var h1 = document.querySelector("h1")
+        h1.textContent = "Array in Javascript"
+        
+        h1.style.marginLeft = "20%"
+         var p = document.querySelector("#content");
+         p.textContent = "In JavaScript, an array is an ordered list of values. Each value is called an element specified by an index. ... First, an array can hold values of different types. For example, you can have an array that stores the number and string, and boolean values. Second, the length of an array is dynamically sized and auto-growing."
+    }
+
+    function funct(){
+        var h1 = document.querySelector("h1")
+        h1.textContent = "Function in Javascript"
+        h1.style.marginLeft = "20%"
+        var p = document.querySelector("#content");
+        p.textContent = "A function in JavaScript is similar to a procedure—a set of statements that performs a task or calculates a value, but for a procedure to qualify as a function, it should take some input and return an output where there is some obvious relationship between the input and the output."
+    }
+    function str(){
+        var h1 = document.querySelector("h1")
+        h1.textContent = "String in Javascript"
+        h1.style.marginLeft = "20%"
+        var p = document.querySelector("#content");
+        p.textContent = "A JavaScript string stores a series of characters like John Doe. A string can be any text inside double or single quotes: let carName1 = Volvo XC60; let carName2 = 'Volvo XC60'; String indexes are zero-based: The first character is in position 0, the second in 1, and so on."
+    }
+    function num(){
+        var h1 = document.querySelector("h1")
+        h1.textContent = "Number in Javascript"
+        h1.style.marginLeft = "20%"
+        var p = document.querySelector("#content");
+        p.textContent = "Number is a primitive wrapper object used to represent and manipulate numbers like 37 or -9.25.The Number constructor contains constants and methods for working with numbers. Values of other types can be converted to numbers using the Number() function."
+    }
+    function nul(){
+        var h1 = document.querySelector("h1")
+        h1.textContent = "Null in Javascript"
+        h1.style.marginLeft = "20%"
+        var p = document.querySelector("#content");
+        p.textContent  = "The value null is written with a literal: null. null is not an identifier for a property of the global object, like undefined can be. Instead, null expresses a lack of identification, indicating that a variable points to no object. In APIs, null is often retrieved in a place where an object can be expected but no object is relevant."
+    }
+    function unde(){
+        var h1 = document.querySelector("h1")
+        h1.textContent = "Undefiend in Javascript"
+        h1.style.marginLeft = "20%"
+        var p = document.querySelector("#content");
+        p.textContent = "A variable that has not been assigned a value is of type undefined. A method or statement also returns undefined if the variable that is being evaluated does not have an assigned value. A function returns undefined if a value was not returned."
+    }
+</script>
