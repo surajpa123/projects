@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch</title>
+    <style>
+        .main{
+        /* border:  1px solid red; */
+        width: 40%;
+        height: 700px;
+        margin-left: 30%;
+        box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+        }
+        input{
+            /* margin-left: 44%; */
+            padding: 10px 30px;
+            margin-top: 2%;
+        }
+        button{
+            display: block;
+            margin-left: 20%;
+            padding: 5px 30px;
+            margin-top: 2%;
+            
+            background-color: teal;
+            border-radius: 10%;
+            color: white;
+            font-size: 18px;
+        }
+        .datadiv{
+            margin-left: 30%;
+            margin-top: 6%;
+        }
+        h1{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            /* margin-left: 50%; */
+        }
+    .box{
+        /* border: 1px solid red; */
+        width: 16%;
+        align-items: center;
+        margin-left: 44%;
+    }
+    </style>
+</head>
+<body> <div class="box">
+    <h2>Enter Movie to Search</h2>
+    <input type="text" id="searchbox" placeholder="Search Your Favorite movie">
+        <button onclick="search()">Search</button>
+    </div>
+    <div class="main">
+        
+        <!-- <select onclick="rating()" name="Imdb Rating" id="rating" >
+            <option>Search By Rating</option>
+            <option id="eight" value="8.0">Imdb 8.0</option>
+        </select> -->
+    </div>
+    <div id="data"></div>
+</body>
+</html>
+<script>
+    var main = document.querySelector(".main");
+    var d = document.querySelector("#data").innerHTML = ""
+    // let url = "http://www.omdbapi.com/?i=tt3896198&apikey=8622130e"
+    // var search = document.getElementById("searchbox").textContent = "";
+   var arr = []
+    function search(){
+      var search =  document.getElementById("searchbox").value;
+        let sitename="https://www.omdbapi.com/?t="
+        let key="&apikey=efb8b084"
+
+        let url = sitename+search+key;
+        fetch(url)
+        .then(function (res){
+            return res.json()
+            
+        })
+        .then(function (res){
+            
+            arr.push(res)
+            
+            // console.log(res)
+            console.log(arr)
+            showMoviedata(arr)
+            arr.pop()
+            // arr = [];
+          
+
+        })
+        .catch(function (err){
+            alert("Not found")
+        })
+        
+       
+    
+    }
+
+    
+    
+   
+    function showMoviedata(arr){
+          arr.forEach(function (data){
+            document.querySelector(".main").innerHTML = "";
+            if(data.Title == undefined){
+                console.log("not found")
+                var i = document.createElement("img")
+                i.src = "https://cdn.dribbble.com/users/1627675/screenshots/4031125/kirigami-404--dribbble.gif"
+                main.append(i)
+
+            } else{
+             var div = document.createElement("div");
+             let image= document.createElement("img");
+
+             
+             var name = document.createElement("h3");
+
+             var release = document.createElement("h3");
+             var language = document.createElement("h3");
+             var genre = document.createElement("h3");
+             var rating = document.createElement("h3");
+             div.setAttribute("class","datadiv")
+             image.src = data.Poster;
+             name.textContent = "Name - "+data.Title;
+             release.textContent = "Release Date - "+data.Released;
+             language.textContent = "Language - "+data.Language
+             genre.textContent = "Genre - "+data.Genre;
+             if(data.imdbRating > 8.5){
+                rating.textContent = "Imdb Rating - "+data.imdbRating+" Recommended"
+            }else{
+                rating.textContent = "Imdb Rating - "+data.imdbRating;
+            }
+
+             
+            //  if(data.imdbRating >= 8.0){
+            //      var p = document.createElement("p").textContent = "Recommended"
+            //  }
+
+             div.append(image,name,release,language,genre,rating)
+            //  document.getElementById("data").append(div)
+             document.querySelector(".main").append(div);
+              
+            }
+
+            })
+            
+        }
+         function rating(){
+            var rate = document.querySelector("#rating").value;
+            // console.log(rate)
+         }
+
+    
+
+
+
+
+    
+    
+  
+</script>
